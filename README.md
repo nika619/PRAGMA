@@ -2,7 +2,6 @@
 
 **PRAGMA** is an advanced, enterprise-grade Cyber Threat Intelligence Engine designed to provide real-time threat analysis, network monitoring, and rapid incident response playbooks. Built with a stunning, high-fidelity user interface, PRAGMA leverages Gemini AI to parse complex indicators of compromise (IOCs) and generate actionable intelligence for security operation centers (SOC).
 
-![PRAGMA UI](https://via.placeholder.com/1200x600.png?text=PRAGMA+Enterprise+Dashboard) <!-- Replace with an actual screenshot later -->
 
 ## 🔥 Core Features
 
@@ -67,6 +66,39 @@ PRAGMA is built on a modern, high-performance web stack:
     Navigate to [http://localhost:3000](http://localhost:3000) in your browser to view the application.
 
 ## 📂 Project Architecture
+
+```mermaid
+graph TD
+    classDef client fill:#0f172a,stroke:#3b82f6,stroke-width:2px,color:#fff;
+    classDef api fill:#1e293b,stroke:#8b5cf6,stroke-width:2px,color:#fff;
+    classDef external fill:#334155,stroke:#10b981,stroke-width:2px,color:#fff;
+    classDef component fill:#0f172a,stroke:#64748b,stroke-width:1px,color:#fff;
+
+    UI[Next.js App Router]:::client
+
+    subgraph User Interface
+        Globe[3D Threat Globe]:::component
+        Dash[Real-time Dashboard]:::component
+        Playbook[Incident Playbooks]:::component
+        Vuln[CVE Explorer]:::component
+    end
+
+    UI --> UserInterface
+
+    subgraph Backend Services
+        API[Next.js API Routes]:::api
+        MockEngine[Mock Data Generators]:::api
+    end
+
+    UI <-->|SSE / REST| API
+    API <--> MockEngine
+
+    subgraph External Dependencies
+        Gemini[Google Gemini AI]:::external
+    end
+
+    API <-->|AI Threat Analysis & Summaries| Gemini
+```
 
 *   `/app`: Next.js App Router providing the core application pages.
 *   `/components`: Reusable React components organized by domains (`layout`, `shared`, etc.).
