@@ -1,0 +1,248 @@
+/* PRAGMA Design System */
+/* Fonts loaded via layout.js <link> tags */
+
+:root {
+  /* Base - Deep dark command center */
+  --bg-primary: #050a12;          /* Near-black navy */
+  --bg-secondary: #0a1628;        /* Dark navy */
+  --bg-tertiary: #0f1f3d;         /* Elevated panels */
+  --bg-card: rgba(15, 25, 50, 0.7); /* Glassmorphism cards */
+
+  /* Accent - Cyber neon */
+  --accent-cyan: #00e5ff;         /* Primary - data, highlights */
+  --accent-blue: #2979ff;         /* Secondary - links, actions */
+  --accent-purple: #7c4dff;       /* Tertiary - special elements */
+
+  /* Semantic - Severity levels */
+  --critical: #ff1744;            /* Critical threats - pulsing red */
+  --high: #ff6d00;                /* High severity - amber */
+  --medium: #ffea00;              /* Medium - warning yellow */
+  --low: #00e676;                 /* Low / safe - phosphor green */
+  --info: #448aff;                /* Informational - blue */
+
+  /* Text */
+  --text-primary: #e8eaf6;        /* Primary text - near-white blue */
+  --text-secondary: #7986cb;      /* Secondary text - muted indigo */
+  --text-muted: #3f51b5;          /* Muted - faded indigo */
+
+  /* Borders & Surfaces */
+  --border: rgba(0, 229, 255, 0.12);  /* Subtle cyan border */
+  --border-active: rgba(0, 229, 255, 0.4);
+  --glow-cyan: 0 0 20px rgba(0, 229, 255, 0.3);
+  --glow-red: 0 0 20px rgba(255, 23, 68, 0.3);
+  --glow-amber: 0 0 20px rgba(255, 109, 0, 0.3);
+  --glow-yellow: 0 0 20px rgba(255, 234, 0, 0.3);
+  --glow-green: 0 0 20px rgba(0, 230, 118, 0.3);
+
+  /* Glass */
+  --glass-bg: rgba(10, 22, 40, 0.6);
+  --glass-border: rgba(0, 229, 255, 0.15);
+  --glass-blur: 20px;
+
+  /* Typography variables */
+  --font-ui: 'Inter', -apple-system, sans-serif;
+  --font-data: 'JetBrains Mono', 'Fira Code', monospace;
+
+  --text-xs: 0.75rem;    /* 12px - labels */
+  --text-sm: 0.875rem;   /* 14px - secondary */
+  --text-base: 1rem;     /* 16px - body */
+  --text-lg: 1.125rem;   /* 18px - emphasis */
+  --text-xl: 1.25rem;    /* 20px - section titles */
+  --text-2xl: 1.5rem;    /* 24px - card titles */
+  --text-3xl: 2rem;      /* 32px - page titles */
+  --text-4xl: 2.5rem;    /* 40px - hero */
+  --text-5xl: 3.5rem;    /* 56px - landing hero */
+}
+
+/* Base Body Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  line-height: 1.5;
+  overflow-x: hidden;
+  /* Dark mode scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-cyan) var(--bg-tertiary);
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+
+/* Background effects that can be applied globally */
+.cyber-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 229, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 229, 255, 0.05) 1px, transparent 1px);
+}
+
+.scanline {
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 229, 255, 0.1) 50%, rgba(0, 0, 0, 0) 100%);
+  opacity: 0.5;
+  position: fixed;
+  bottom: 100%;
+  animation: scanline 8s linear infinite;
+  pointer-events: none;
+  z-index: 50;
+}
+
+/* Text styles */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+h1 { font-size: var(--text-4xl); margin-bottom: 1rem; }
+h2 { font-size: var(--text-3xl); margin-bottom: 1rem; }
+h3 { font-size: var(--text-2xl); }
+h4 { font-size: var(--text-xl); }
+
+p {
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.text-data {
+  font-family: var(--font-data);
+}
+
+a {
+  color: var(--accent-cyan);
+  text-decoration: none;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+a:hover {
+  text-shadow: var(--glow-cyan);
+}
+
+/* Custom Scrollbar for webkit */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-tertiary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 229, 255, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 229, 255, 0.6);
+}
+
+/* Utility Animations */
+@keyframes scanline {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 0 0 rgba(255, 23, 68, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(255, 23, 68, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 23, 68, 0); }
+}
+
+@keyframes pulse-cyan {
+  0% { box-shadow: 0 0 0 0 rgba(0, 229, 255, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(0, 229, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 229, 255, 0); }
+}
+
+@keyframes rotate-slow {
+  to { transform: rotate(360deg); }
+}
+
+.animate-pulse-red {
+  animation: pulse-glow 2s infinite;
+}
+
+.animate-pulse-cyan {
+  animation: pulse-cyan 2s infinite;
+}
+
+/* Button Reset */
+button {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+/* Common Layout Utilities */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+}
+
+/* Markdown prose styling */
+.prose {
+  color: var(--text-primary);
+}
+.prose h1, .prose h2, .prose h3 {
+  color: #fff;
+  margin-top: 1.5em;
+}
+.prose p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+.prose strong {
+  color: var(--accent-cyan);
+  font-weight: 600;
+}
+.prose ul, .prose ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+}
+.prose li {
+  margin-bottom: 0.5rem;
+}
+.prose code {
+  font-family: var(--font-data);
+  background: var(--bg-tertiary);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+  color: var(--accent-purple);
+}
+.prose pre {
+  background: var(--bg-tertiary);
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+}
+.prose pre code {
+  background: transparent;
+  padding: 0;
+  color: var(--text-primary);
+}
