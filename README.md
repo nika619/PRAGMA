@@ -1,5 +1,7 @@
 # PRAGMA 🛡️
 
+[![CI](https://github.com/nika619/PRAGMA/actions/workflows/ci.yml/badge.svg)](https://github.com/nika619/PRAGMA/actions/workflows/ci.yml)
+
 **PRAGMA** is an advanced, enterprise-grade Cyber Threat Intelligence Engine designed to provide real-time threat analysis, network monitoring, and rapid incident response playbooks. Built with a stunning, high-fidelity user interface, PRAGMA leverages Gemini AI to parse complex indicators of compromise (IOCs) and generate actionable intelligence for security operation centers (SOC).
 
 
